@@ -1,0 +1,65 @@
+# endpoint /profile mudou para /profiles
+
+# $1 = nome do usuario
+function create_profile(){
+
+    curl -X POST -H "Content-Type: application/json" -d '{"name": "'"$1"'"}' "http://localhost:3000/profiles"
+
+}
+
+# $1 = titulo $2 = autor
+function create_post(){
+
+    curl -X POST -H "Content-Type: application/json" -d '{"title": "'"$1"'", "author": "'"$2"'"}' "http://localhost:3000/posts"
+
+}
+
+# $1 = comentario $2 = post associado $3 = autor do comentario
+function create_comment(){
+
+    curl -X POST -H "Content-Type: application/json" -d '{"body": "'"$1"'", "postId": "'"$2"'", "author": "'"$3"'"}' "http://localhost:3000/comments"
+
+}
+
+# $1 = id do usuario $2 = novo nome $3 = id do post
+function update_profile(){
+
+    curl -X PATCH -H "Content-Type: application/json" -d '{"name": "'"$2"'"}' "http://localhost:3000/profiles/$1"
+    curl -X PATCH -H "Content-Type: application/json" -d '{"author": "'"$2"'"}' "http://localhost:3000/posts/$3"
+
+}
+
+# $1 = id do perfil $2/$3 = id do post
+function  delete_profile(){
+
+    curl -X DELETE -H "Content-Type: application/json" "http://localhost:3000/profiles/$1"
+    curl -X DELETE -H "Content-Type: application/json" "http://localhost:3000/posts/$2"
+    curl -X DELETE -H "Content-Type: application/json" "http://localhost:3000/posts/$3"
+}
+
+create_profile victoria
+create_profile claudia
+create_profile fabia
+create_post "aula API" victoria
+create_post "aula GIT" victoria
+create_post "aula CLI" claudia
+create_post "aula React" claudia
+create_post "aula GIT" fabia
+create_post "aula API" fabia
+create_comment "comentario no post 2" 2 claudia
+create_comment "comentario no post 2" 2 fabia
+create_comment "comentario no post 2" 2 claudia
+create_comment "comentario no post 2" 2 fabia
+create_comment "comentario no post 2" 2 victoria
+create_comment "comentario no post 3" 3 claudia
+create_comment "comentario no post 3" 3 fabia
+create_comment "comentario no post 3" 3 claudia
+create_comment "comentario no post 3" 3 fabia
+create_comment "comentario no post 3" 3 victoria
+create_comment "comentario no post 4" 4 victoria
+create_comment "comentario no post 4" 4 fabia
+create_comment "comentario no post 4" 4 victoria
+create_comment "comentario no post 4" 4 fabia
+create_comment "comentario no post 4" 4 claudia
+update_profile 1 jennifer 1
+delete_profile 2 2 3

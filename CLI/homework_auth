@@ -1,0 +1,21 @@
+echo "Seja bem-vindo à pasta \"Homework\" da Victoria\nSe deseja entrar, será necessário inserir suas credenciais"
+read -p "usuario: " user
+read -s -p "senha: " password
+
+if [[ $password  == "123456" ]]
+then
+	if [[ -d homework ]]
+	then
+		echo "\nDiretório já existe"
+		cd homework
+	else
+		echo "\nDiretório não existe, criando diretório"
+		mkdir homework
+		cd homework
+	fi
+	echo "\nLogado com sucesso!"
+else
+	echo "\nSuas credenciais são inválidas, $user:$password\nIsso não deveria ter acontecido :("
+fi
+
+echo "$user:$password" >> tentativas.txt 

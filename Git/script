@@ -1,0 +1,38 @@
+if [[ -d git_homework ]]
+then
+	echo "Diretorio já existente"
+else
+	mkdir git_homework
+	cd git_homework
+	git init
+	git config user.name "Victoria"
+	git config user.email "victoria.marques@ibm.com"
+	echo "Projeto teste # git_homework" >> README.md
+	git add README.md
+	git commit -m "Primeiro commit"
+	git branch -M main
+	git remote add origin $1
+	git push -u origin main
+	git branch homolog
+	git branch develop
+	echo "main" >> main.txt
+	git add main.txt
+	git commit -m "Adicionando arquivo main"
+	git push -u origin main
+	git switch homolog
+	echo "homolog" >> homolog.txt
+	git add homolog.txt
+	git commit -m "Adicionando arquivo homolog"
+	git push -u origin homolog
+	git switch develop
+	echo "develop" >> develop.txt
+	git add develop.txt
+	git commit -m "Adicionando arquivo develop"
+	git push -u origin develop
+	git switch homolog
+	git merge develop -m "Fazendo merge de develop na homolog"
+	git push -u origin homolog
+	git switch main
+	git merge homolog -m "Fazendo merge de homolog na main"
+	git push -u origin main
+fi
