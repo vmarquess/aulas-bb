@@ -1,0 +1,6 @@
+docker build -t meuapache/apache:0.1 .
+docker run --name lab-apache -d -p 8080:80 meuapache/apache:0.1
+curl http://localhost:8080
+docker stop lab-apache
+# docker tag meuapache/apache:0.1 victoriamarques/meuapache:0.1
+# docker push ricardofcapeli/meuapache:0.1

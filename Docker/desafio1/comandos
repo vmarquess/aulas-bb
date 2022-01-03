@@ -1,0 +1,8 @@
+docker pull quay.io/redhattraining/httpd-parent:2.4
+docker run --name httpd-basic -d -p 8080:80 quay.io/redhattraining/httpd-parent:2.4
+curl http://localhost:8080
+docker exec -it httpd-basic /bin/bash
+cd /var/www/html
+ls
+echo "Ola mundo" > index.html
+exit

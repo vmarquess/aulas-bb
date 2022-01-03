@@ -1,0 +1,1 @@
+Dockerfile com a imagem de um container Apache e lista de comandos para criação da imagem, execução do container, acessando o endereço onde o serviço está disponível, por fim, envio da imagem para o meu repositório no docker hub.

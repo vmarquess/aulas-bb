@@ -1,0 +1,19 @@
+docker run --name mysql-basic \
+-e MYSQL_USER=user1 -e MYSQL_PASSWORD=mypa55 \
+-e MYSQL_DATABASE=items -e MYSQL_ROOT_PASSWORD=r00tpa55 \
+-d mysql:8.0
+docker ps
+docker exec -it mysql-basic /bin/bash
+mysql -uroot -pr00tpa55
+show databases;
+use items;
+CREATE TABLE Projects (id int NOT NULL,
+name varchar(255) DEFAULT NULL,
+code varchar(255) DEFAULT NULL,
+PRIMARY KEY (id));
+show tables;
+insert into Projects (id, name, code) values (1,'docker','IBM');
+select * from Projects;
+exit
+exit
+docker stop mysql-basic

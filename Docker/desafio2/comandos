@@ -1,0 +1,6 @@
+docker build -t victoria/custom-apache .
+docker images
+docker run --name meuapache -d -p 20080:8080 victoria/custom-apache
+curl https://localhost:20080
+docker tag victoria/custom-apache victoriamarques/custom-apache:0.1
+docker push victoriamarques/custom-apache:0.1

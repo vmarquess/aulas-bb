@@ -1,0 +1,3 @@
+docker build -t desafio3/apache .
+docker run --name apache -d -p 8080:80 -v $(pwd)/vol:/usr/local/apache2/htdocs/ desafio3/apache
+curl http://localhost:8080
